@@ -1,0 +1,97 @@
+#CUSTOM HOW TO TRAIN YOUR DRAGON
+
+use_bpm 135
+use_synth :piano
+
+define :part_3 do
+  use_synth_defaults sustain: 5
+  play :e5
+  sleep 2
+  play :f5
+  sleep 2
+  play :d5
+  sleep 1
+  play :f5
+  sleep 1
+  play :e5
+  sleep 3
+  play :e5
+  sleep 1
+  play :f5
+  sleep 2
+  play :d5
+  sleep 1
+  play :f5
+  sleep 1
+  play :e5
+  sleep 2
+end
+
+with_fx :tremolo do
+  live_loop :httyd do
+    use_synth_defaults sustain: 5
+    play :c5
+    sleep 1
+    play :g4
+    sleep 1
+    play :c5
+    sleep 1
+    play :d5
+    sleep 1
+    play :b4
+    sleep 1
+    play :g4
+    sleep 1
+    play :b4
+    sleep 1
+    play :c5
+    sleep 1
+    play :a4
+    sleep 1
+    play :g4
+    sleep 1
+    play :g4
+    sleep 1
+    play :f4
+    sleep 1
+    play :f4
+    sleep 1
+    play :e4
+    sleep 1
+    play :d4
+    sleep 1
+    play :c4
+    sleep 1
+  end
+end
+
+sleep 16
+
+with_fx :flanger do
+  live_loop :bg do
+    part_3
+  end
+end
+
+sleep 16
+
+
+with_fx :tremolo do
+  live_loop :high do
+    use_synth_defaults sustain: 5
+    play :a5
+    sleep 1
+    play :a5
+    sleep 1
+    play :b5
+    sleep 1
+    play :b5
+    sleep 1.5
+    play :g5
+    sleep 0.5
+    play :e5
+    sleep 2
+    play :a4
+    sleep 1
+  end
+end
