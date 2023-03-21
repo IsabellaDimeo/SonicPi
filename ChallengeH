@@ -1,0 +1,39 @@
+#CHALLENGE H: MORTAL KOMBAT
+
+use_bpm 120
+use_synth :chiplead
+
+define :MK do |a, a2, b, b2, c, c2, d, d2|
+  play a
+  play a2
+  sleep 0.5
+  play b
+  play b2
+  sleep 0.5
+  play c
+  play c2
+  sleep 0.5
+  play d
+  play d2
+  sleep 0.5
+end
+
+# MEASURE 1 ---------------------------
+
+MK :a4, :a5, :a4, :a5, :c5, :g6, :a4, :a5
+MK :d5, :d6, :a4, :a5, :e5, :e6, :d5, :d6
+
+#MEASURE 2 ----------------------------
+
+MK :c5, :c6, :c5, :c6, :e5, :e6, :c5, :c6
+MK :g5, :g6, :c5, :c6, :e5, :e6, :c5, :c6
+
+#MEASURE 3 ----------------------------
+
+MK :g4, :g5, :g4, :g5, :b4, :b5, :g4, :g5
+MK :c5, :c6, :g4, :g5, :d5, :d6, :c5, :c6
+
+#MEASURE 4 ----------------------------
+
+MK :f4, :f5, :f4, :f5, :a4, :a5, :f4, :f5
+MK :c5, :c6, :f4, :f5, :c5, :c6, :b4, :b5
