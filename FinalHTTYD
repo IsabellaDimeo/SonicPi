@@ -1,0 +1,98 @@
+#CUSTOM HOW TO TRAIN YOUR DRAGON
+
+use_bpm 135
+use_synth :piano
+
+httyd_sample = "C:/Users/isabella_dimeo/Downloads/Dreamworks Animation Intro  How To Train Your Dragon 2.wav"
+
+s = 0
+f = 0.2
+a = 1.5
+
+part_1 = [:c5, :g4, :c5, :d5, :b4, :g4, :b4, :c5, :a4, :g4, :g4, :f4, :f4, :e4, :d4, :c4]
+x = 0
+
+num = 0
+
+define :part_2 do
+  use_synth_defaults sustain: 5
+  play :e5
+  sleep 2
+  play :f5
+  sleep 2
+  play :d5
+  sleep 1
+  play :f5
+  sleep 1
+  play :e5
+  sleep 3
+  play :e5
+  sleep 1
+  play :f5
+  sleep 2
+  play :d5
+  sleep 1
+  play :f5
+  sleep 1
+  play :e5
+  sleep 2
+end
+
+define :part_3 do |a, b, c, d, e, f, g|
+  use_synth_defaults sustain: 5
+  play a
+  sleep 1
+  play b
+  sleep 1
+  play c
+  sleep 1
+  play d
+  sleep 1.5
+  play e
+  sleep 0.5
+  play f
+  sleep 2
+  play g
+  sleep 1
+end
+
+print(sample_duration httyd_sample)
+
+
+#########################################################################
+
+5.times do
+  sample httyd_sample, start: s, finish: f, amp: a
+  sleep 52.99163265306123/5
+  s = s + 0.2
+  f = f + 0.2
+  a = a - 0.1
+end
+
+
+live_loop :httyd do
+  with_fx :tremolo do
+    16.times do
+      play part_1[x]
+      sleep 1
+      x = x + 1
+    end
+    x = 0
+  end
+end
+
+sleep 16
+
+with_fx :flanger do
+  live_loop :bg do
+    part_2
+  end
+end
+
+sleep 16
+
+live_loop :high do
+  with_fx :tremolo do
+    part_3 :a5, :a5, :b5, :b5, :g5, :e5, :a4
+  end
+end
