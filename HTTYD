@@ -1,0 +1,118 @@
+#HOWLS MOVING CASTLE
+
+use_bpm 135
+use_synth :piano
+use_synth_defaults sustain: 5
+
+#INTRO SAMPLE
+
+fmitf = "C:/Users/isabella_dimeo/Downloads/find me in the future.wav"
+
+print(sample_duration fmitf)
+
+s = 0
+f = 0.2
+a = 1
+
+5.times do
+  sample fmitf, start: s, finish: f, amp: a
+  sleep 25.910437500000004/5
+  s = s + 0.2
+  f = f + 0.2
+  a = a - 0.01
+end
+
+sleep 5.5
+
+#INTRODUCTION
+
+define :op do |a, b|
+  3.times do
+    play a
+    sleep 0.5
+    play b
+    sleep 0.5
+  end
+end
+
+op :d5, :ef5
+op :c5, :d5
+op :bf4, :c5
+
+play :a4
+sleep 0.25
+play :g4
+sleep 0.25
+play :fs4
+sleep 2
+play :d4
+sleep 4
+
+
+#CHORUS #1
+
+chorus = [:d4, :g4, :bf4, :d5, :d5, :c5, :bf4, :a4, :bf4, :g4, :bf4, :d5, :g5, :g5, :g5, :f5, :ef5, :f5, :a4, :d5, :f5, :a5, :g5, :f5, :e5, :f5, :g5, :f5, :e5, :d5, :c5, :bf4, :c5, :d5, :c5, :g4, :a4]
+chorus_2 = [:d4, :g4, :bf4, :bf4, :bf4, :f4, :f4, :f4, :bf4, :g4, :bf4, :d5, :bf4, :bf4, :bf4, :bf4, :bf4, :d5, :a4, :d5, :f5, :d5, :d5, :df5, :d5, :d5, :d5, :d5, :a4, :a4, :f4, :f4, :f4, :d5, :c5, :g4, :a4]
+chorus_sleep = [1, 1, 1, 2, 1, 1, 1, 1, 2.5, 0.5, 0.5, 0.5, 2, 1, 1, 1, 1, 2.5, 0.5, 0.5, 0.5, 2, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1.5]
+backing_notes = [:e4, :g5, :g5, :b3, :g5, :g5, :e4, :g5, :g5, :b3, :g5, :g5, :e4, :g5, :g5, :b3, :g5, :g5, :e4, :g5, :g5, :b3, :g5, :g5, :e4, :g5, :g5, :b3, :g5, :g5, :e4, :g5, :g5, :b3, :g5, :g5, :e4, :g5, :g5, :b3, :g5, :g5, :e4, :g5, :g5, :b3]
+x = 0
+y = 0
+g = 0
+
+37.times do
+  play chorus[x]
+  play chorus_2[x]
+  sleep chorus_sleep[x]
+  x = x + 1
+end
+
+
+#INTERLUDE
+
+interlude = [:d4, :g4, :a4, :e4, :a4, :c5, :bf4, :a4, :c5, :bf4, :a4, :g4, :f4, :e4, :d4]
+interlude_2 = [:d4, :g4, :a4, :d4, :f4, :a4, :g4, :f4, :a4, :g4, :f4, :e4, :d4, :c4, :a3]
+interlude_sleep = [0.5, 0.5, 0.5, 0.75, 0.75, 0.75, 1.25, 3.5, 0.5, 1.5, 0.5, 0.75, 0.5, 1, 6]
+z = 0
+
+15.times do
+  play interlude[z]
+  play interlude_2[z]
+  sleep interlude_sleep[z]
+  z = z + 1
+end
+
+#BACKING NOTES
+
+live_loop :fcbn do
+  play backing_notes[g], amp: 0.25
+  sleep 1
+  g = g + 1
+end
+
+sleep 9
+
+#FINAL CHORUS
+
+37.times do
+  play chorus[y]
+  play chorus_2[y]
+  sleep chorus_sleep[y]
+  y = y + 1
+end
+
+sleep 1
+
+#ENDING
+
+ending_1 = [:fs6, :e6, :ds6, :e6, :bs4, :b4, :a4, :b4, :a4, :fs4, :b5, :e4, :ds4, :e4, :gs4, :a4, :bs4, :b4, :as4, :b4, :ds5, :e5, :fs5, :gs5, :fs5, :gs5, :b5, :bs5, :ds6, :e6]
+ending_2 = [:fs5, :e5, :ds5, :e5, :a4, :g4, :fs4, :ds4, :cs4, :ds4, :e5, :e4, :ds4, :e4, :gs4, :a4, :bs4, :b4, :as4, :b4, :ds5, :e5, :fs5, :gs5, :fs5, :gs5, :b5, :bs5, :ds6, :e6]
+e_sleep  = [0.5, 0.5, 0.5, 0.5, 1, 1, 1, 2, 1, 3, 3, 0.5, 0.5, 0.5, 0.5 , 0.5 , 0.5, 0.5, 0.5, 0.5, 0.5 , 0.5 , 0.5, 0.5, 0.5, 0.5, 0.5 , 0.5 , 0.5, 2]
+
+b = 0
+
+30.times do
+  play ending_1[b]
+  play ending_2[b]
+  sleep e_sleep[b]
+  b = b + 1
+end
