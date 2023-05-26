@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class addScript : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Log("Start");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    // onTriggerEnter is called when the detectionZone is entered
+    //This adds rigidbodys on all the objects, making everything fall on command towards the end of my Rube Goldberg Machine
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("HIT DETECTED!");
+        GameObject.FindWithTag("Structure").AddComponent<Rigidbody>();
+        GameObject.FindWithTag("BOVStructure").AddComponent<Rigidbody>();
+        GameObject.FindWithTag("TGWStructure").AddComponent<Rigidbody>();
+        GameObject.FindWithTag("DominoSection").AddComponent<Rigidbody>();
+        GameObject.FindWithTag("Final").AddComponent<Rigidbody>();
+        GameObject.FindWithTag("Cube").AddComponent<Rigidbody>();
+        GameObject.FindWithTag("FancyMaterial").AddComponent<Rigidbody>();
+    }
+}
