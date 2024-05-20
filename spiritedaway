@@ -1,0 +1,270 @@
+# Welcome to Sonic Pi
+use_bpm 90
+use_synth_defaults sustain: 1, amp: 7
+use_synth :kalimba
+
+##kalimba
+
+#INTRO
+
+background_chords_intro = [
+  [:ef3, :gf3, :bf3], [:ef3, :gf3, :bf3]
+]
+background_duration_intro = [
+  1, 1
+]
+
+live_loop :backgroundintro do
+  index = 0
+  background_chords_intro.each do |chord|
+    play_chord chord, release: background_duration_intro[index], amp: 1
+    sleep background_duration_intro[index]
+    index += 1
+  end
+end
+
+x = 0
+intro = [:ef5, :g5, :c6, :bf4, :ef5, :af5, :af4, :ef5, :gf5, :c4, :f5, :bf5]
+intro2 = [:af4, :ef4, :c6, :df4, :g4, :af5, :c4, :f4, :gf5, :b3, :e4, :g4]
+sleepintro = [0.5, 0.5, 3, 0.5, 0.5, 3, 0.5, 0.5, 1, 0.5, 0.5, 2]
+12.times do
+  play intro[x]
+  play intro2[x]
+  sleep sleepintro[x]
+  x = x + 1
+end
+
+sleep 4
+
+#START
+
+background_chords_start1 = [
+  [:bf3, :df4, :f4], [:af3, :cf4, :ef4]
+]
+background_duration_start1 = [
+  0.5, 0.5
+]
+
+live_loop :backgroundintro do
+  index = 0
+  background_chords_start1.each do |chord|
+    play_chord chord, release: background_duration_start1[index], amp: 1
+    sleep background_duration_start1[index]
+    index += 1
+  end
+end
+
+y = 0
+start1 = [:bf4, :c5, :f5, :c5, :bf4, :bf4]
+start1b = [:c5, :c5, :c5, :c5, :bf4, :bf4]
+start1sleep = [0.5, 0.5, 0.5, 0.5, 0.25, 3.75]
+4.times do
+  play :c5, sustain: 0.25
+  play :d4, sustain: 0, amp: 2.5
+  play :g4, sustain: 0, amp: 2.5
+  sleep 0.5
+end
+6.times do
+  play start1[y], sustain: 0.25
+  play start1b[y],  sustain: 0, amp: 2.5
+  play :d4, sustain: 0, amp: 2.5
+  play :g4, sustain: 0, amp: 2.5
+  play :c5, sustain: 0, amp: 2.5
+  sleep start1sleep[y]
+  y = y + 1
+end
+
+
+
+#START 2
+
+background_chords_start2 = [
+  [:bf4, :f4, :b5, :e5]
+]
+background_duration_start2 = [
+  0.5, 0.5
+]
+
+live_loop :backgroundintro do
+  index = 0
+  background_chords_start1.each do |chord|
+    play_chord chord, release: background_duration_start2[index], amp: 1
+    sleep background_duration_start2[index]
+    index += 1
+  end
+end
+
+4.times do
+  play :bf4, sustain: 0.25
+  play :f4, sustain: 0, amp: 2.5
+  play :b5, sustain: 0, amp: 2.5
+  play :e5, sustain: 0, amp: 2.5
+  sleep 0.5
+end
+z = 0
+start2 = [:af4, :bf4, :ef5, :bf4, :af4, :g4, :af4]
+start2sleep = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1.5]
+7.times do
+  play start2[z], sustain: 0.25
+  play :f4, sustain: 0, amp: 2.5
+  play :b5, sustain: 0, amp: 2.5
+  play :e5, sustain: 0, amp: 2.5
+  sleep start2sleep[z]
+  z = z + 1
+end
+
+
+
+
+#START 3
+background_chords_start3 = [
+  [:f4, :g4, :af4]
+]
+background_duration_start3 = [
+  0.5, 0.5
+]
+
+live_loop :backgroundintro do
+  index = 0
+  background_chords_start1.each do |chord|
+    play_chord chord, release: background_duration_start3[index], amp: 1
+    sleep background_duration_start3[index]
+    index += 1
+  end
+end
+
+a = 0
+start3 = [:f4, :g4, :af4, :af4, :af4, :af4, :af4]
+start3sleep = [0.25, 0.25, 0.5, 0.5, 0.5, 0.5, 1.5]
+
+7.times do
+  play start3[a]
+  play :ef4, sustain: 0, amp: 2.5
+  play :af5, sustain: 0, amp: 2.5
+  play :df5, sustain: 0, amp: 2.5
+  sleep start3sleep[a]
+  a = a + 1
+end
+
+
+
+
+
+#START 4
+
+b=0
+start4 = [:f4, :g4, :af4, :af4, :af4, :af4, :g4, :af4]
+start4sleep = [0.25, 0.25, 0.5, 0.5, 0.5, 0.5, 0.5, 1]
+8.times do
+  play start4[b]
+  play :d4, sustain: 0, amp: 2.5
+  play :af5, sustain: 0, amp: 2.5
+  play :c5, sustain: 0, amp: 2.5
+  sleep start4sleep[b]
+  b=b+1
+end
+
+
+
+
+
+#START 5
+
+
+
+c=0
+start5 = [:f4, :g4, :af4, :af4, :af4, :af4, :af4, :ef5, :af4]
+sleep5 = [0.25, 0.25, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5]
+
+9.times do
+  play start5[c], sustain: 0.25
+  play :df4, sustain: 0, amp: 2.5
+  play :af5, sustain: 0, amp: 2.5
+  play :c5, sustain: 0, amp: 2.5
+  sleep sleep5[c]
+  c = c + 1
+end
+
+#END START NOTE
+play :bf4, sustain: 4
+play :bf4, sustain: 0, amp: 2.5
+play :ef5, sustain: 0, amp: 2.5
+play :af5, sustain: 0, amp: 2.5
+play :c4, sustain: 0, amp: 2.5
+play :f5, sustain: 0, amp: 2.5
+play :bf5, sustain: 0, amp: 2.5
+sleep 3
+
+
+
+
+
+
+#CHORUS
+
+background_chords_start4 = [
+  [:f5, :g5, :af4, :af4,]
+]
+background_duration_start4 = [
+  0.5, 0.5
+]
+
+live_loop :backgroundintro do
+  index = 0
+  background_chords_start1.each do |chord|
+    play_chord chord, release: background_duration_start4[index], amp: 1
+    sleep background_duration_start4[index]
+    index += 1
+  end
+end
+
+d=0
+chorus = [:f5, :g5, :af4, :af4, :bf4, :af4, :g4, :c4, :ef4, :f4, :f4, :ef4, :df4, :ef4]
+chorus2 = [:f4, :g4, :c4,:c4, :bf5, :af5, :c4, :c5, :ef5, :af4, :af4, :ef5, :df5, :af4]
+chorus3 = [:f5, :g5, :f5, :f5, :bf4, :af4, :ef4, :c4, :ef4, :f5, :f5, :ef4, :df4, :bf4]
+chorus4 = [:f4, :g4, :af5, :af5, :bf5, :af5, :g5, :c5, :ef5, :f5, :f5, :ef5, :df5, :ef5]
+chorussleep = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1.5]
+
+14.times do
+  play chorus[d]
+  play chorus2[d]
+  play chorus3[d]
+  play chorus4[d]
+  sleep chorussleep[d]
+  d = d + 1
+end
+
+
+
+
+
+#CHORUS2
+e=0
+secondchorus = [:ef5, :ef5, :df5, :df5, :cf5, :df5, :ef5, :ff5, :gf5, :ff5, :ff5, :ef5, :ff5, :ef5, :ff5, :gf5, :af5, :ff5]
+secondchorus2 = [:ef4, :ef4, :df4, :df4, :cf4, :df4, :ef4, :ff4, :gf4, :ff4, :ff4, :ef4, :ff4, :ef4, :ff4, :gf4, :df5, :af4]
+secondchorussleep = [0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.3, 0.3, 0.3, 0, 3]
+
+18.times do
+  play secondchorus[e]
+  play secondchorus2[e]
+  sleep secondchorussleep[e]
+  e = e + 1
+end
+
+
+
+
+
+
+#CHORUS3
+f=0
+thirdchorus = [:ff5, :gf5, :af5, :ff5, :af5, :g5, :af5, :bf5, :ef4, :af4, :g4, :af4, :df4, :f4, :g4, :c5, :f4, :g4, :f5, :g5, :c6, :g5]
+thirdchorus2 = [:ff4, :gf4, :df5, :af4, :af4, :g4, :af4, :bf4, :ef4, :af4, :g4, :af4, :df4, :f4, :g4, :c5, :f4, :g4, :f5, :g5, :f5, :df5]
+thirdchorussleep = [0.5, 0.5, 0, 2.5, 0.5, 0.5, 0.5, 2.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 2.5]
+
+21.times do
+  play thirdchorus[f]
+  play thirdchorus2[f]
+  sleep thirdchorussleep[f]
+  f = f + 1
+end
